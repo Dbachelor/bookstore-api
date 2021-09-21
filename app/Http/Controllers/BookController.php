@@ -122,13 +122,14 @@ class BookController extends Controller
             $arr = array("id" => $id, "name" => $record->name, "isbn" => $record->isbn, "authors" => explode(',', $record->authors),
             "number_of_pages" => $record->number_of_pages, "country" => $record->country, "release_date" => $record->release_date);
             $sql = book_store::where('id', $id)->update($arr);
-            echo $sql . $id;
+
             if ($sql) {
                 $response = array("status_code" => 200, "status" => "success", "message" => "The book \"" . $record->name . "\" Book was updated successfully",
             "data" => $arr);
+            $response = json_encode($response);
             }
         }
-        return json_encode($response);
+        return $response;
     }
 
     /**
