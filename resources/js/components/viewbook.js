@@ -42,9 +42,9 @@ export function ViewBook(){
         const arr = {name : document.querySelector("#name").value, country : document.querySelector('#country').value,
             isbn : document.querySelector('#isbn').value, authors : document.querySelector('#authors').value,
             number_of_pages : document.querySelector('#number_of_pages').value, release_date : document.querySelector("#release_date").value }
-            console.log(arr)
+           // console.log(arr)
             let data = JSON.stringify(arr);
-            console.log(data);
+            //console.log(data);
             let response = await fetch(`${API_PATH}/v1/books/${id}`, {
               method: 'PATCH',
               headers : {
@@ -57,13 +57,14 @@ export function ViewBook(){
 
             });
 
-            let result = await response.json();
+            let result = await response.text();
+
             if (result){
                 swal("record updated");
-                setTimeout(function(){location.reload()}, 1800);
+                setTimeout(function(){window.location='/'}, 1800);
             }else{
                 swal('failed to update record');
-                setTimeout(function(){<Redirect to='/' />}, 1800);
+                setTimeout(function(){window.location='/'}, 1800);
             }
             //alert(result);
          // };
