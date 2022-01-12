@@ -29,7 +29,7 @@ export const useDelete = async (url, resource, id, header) => {
     console.log(data);
     return await data;
 }
-
+//c419cb06-8478-477d-80a5-11e76aa3cb30
 export const usePost = async (url, resource, data) => {
 
 }
